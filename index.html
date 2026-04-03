@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHRONO PRESTIGE — Timepieces of Legacy</title>
+  <meta name="description" content="Discover the world's most exquisite luxury timepieces. Crafted to perfection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+<script src="script.js"></script>
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">CHRONO</div>
+      <div class="loader-line"><span></span></div>
+      <div class="loader-text">Crafting Excellence...</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo" onclick="showPage('home')">
+      <span class="logo-main">CHRONO</span>
+      <span class="logo-sub">PRESTIGE</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')" data-page="home">Maison</a></li>
+      <li><a href="#" onclick="showPage('collections')" data-page="collections">Collections</a></li>
+      <li><a href="#" onclick="showPage('product-detail')" data-page="product-detail">Atelier</a></li>
+      <li><a href="#" onclick="showPage('login')" data-page="login">Espace Client</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="showPage('cart')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================== HOME PAGE ======================== -->
+  <div class="page active" id="page-home">
+
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Est. 1905 · Geneva, Switzerland</p>
+        <h1 class="hero-title">
+          <span class="line-reveal">The Art of</span>
+          <span class="line-reveal italic">Timeless</span>
+          <span class="line-reveal">Precision</span>
+        </h1>
+        <p class="hero-subtitle">Each piece is a declaration — not merely of time,<br>but of who you are within it.</p>
+        <div class="hero-cta">
+          <button class="btn-gold" onclick="showPage('collections')">Explore Collection</button>
+          <button class="btn-ghost">Watch Film</button>
+        </div>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- INTRO STATEMENT -->
+    <section class="intro-statement">
+      <div class="container">
+        <p class="statement-text">
+          "A Chrono Prestige watch is not assembled — it is <em>composed</em>. Every gear, every jewel, every second hand tells a story written in gold."
+        </p>
+        <div class="gold-rule"></div>
+      </div>
+    </section>
+
+    <!-- FEATURED COLLECTION -->
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">The New Garde</p>
+          <h2 class="section-title">Featured Timepieces</h2>
+        </div>
+        <div class="featured-grid" id="featuredGrid">
+          <!-- Populated by JS -->
+        </div>
+        <div class="section-cta">
+          <button class="btn-gold" onclick="showPage('collections')">View All Collections</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERITAGE BANNER -->
+    <section class="heritage-banner">
+      <div class="heritage-content">
+        <div class="heritage-stat"><span class="stat-num">118</span><span class="stat-label">Years of Craft</span></div>
+        <div class="heritage-divider"></div>
+        <div class="heritage-stat"><span class="stat-num">340</span><span class="stat-label">Master Artisans</span></div>
+        <div class="heritage-divider"></div>
+        <div class="heritage-stat"><span class="stat-num">12,000</span><span class="stat-label">Unique Parts</span></div>
+        <div class="heritage-divider"></div>
+        <div class="heritage-stat"><span class="stat-num">97</span><span class="stat-label">Countries</span></div>
+      </div>
+    </section>
+
+    <!-- CRAFTSMANSHIP -->
+    <section class="craft-section">
+      <div class="container craft-grid">
+        <div class="craft-visual">
+          <div class="craft-image-frame">
+            <div class="craft-3d-preview" id="craftCanvas"></div>
+            <div class="frame-corner tl"></div>
+            <div class="frame-corner tr"></div>
+            <div class="frame-corner bl"></div>
+            <div class="frame-corner br"></div>
+          </div>
+        </div>
+        <div class="craft-text">
+          <p class="section-eyebrow">The Maison</p>
+          <h2 class="section-title">Born from<br><em>Obsession</em></h2>
+          <p class="craft-body">Every Chrono Prestige begins not on a bench, but in the imagination of our master horologists. Months of sketches, calculations, and dreams before a single component is cast.</p>
+          <p class="craft-body">Our movements are hand-finished to a standard that defies the industrial age. Because some things should never be rushed.</p>
+          <button class="btn-gold" onclick="showPage('collections')">Discover More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+      <div class="container">
+        <h2 class="newsletter-title">Enter the Inner Circle</h2>
+        <p class="newsletter-sub">Private access to new releases, atelier events, and collector privileges.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="Your email address" class="newsletter-input" required />
+          <button type="submit" class="btn-gold">Join</button>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ======================== COLLECTIONS PAGE ======================== -->
+  <div class="page" id="page-collections">
+    <div class="page-hero-sm">
+      <h1 class="page-hero-title">Collections</h1>
+      <p class="page-hero-sub">Masterpieces Forged in Tradition</p>
+    </div>
+
+    <section class="collections-section">
+      <div class="container">
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+          <button class="filter-btn" onclick="filterProducts('classic', this)">Classic</button>
+          <button class="filter-btn" onclick="filterProducts('sport', this)">Sport</button>
+          <button class="filter-btn" onclick="filterProducts('perpetual', this)">Perpetual</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======================== PRODUCT DETAIL PAGE ======================== -->
+  <div class="page" id="page-product-detail">
+    <div class="container product-detail-layout">
+      <div class="product-3d-pane">
+        <canvas id="detailCanvas"></canvas>
+        <div class="product-3d-controls">
+          <span>Drag to rotate · Scroll to zoom</span>
+        </div>
+      </div>
+      <div class="product-info-pane" id="productInfo">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== LOGIN PAGE ======================== -->
+  <div class="page" id="page-login">
+    <div class="auth-container">
+      <div class="auth-deco"></div>
+      <div class="auth-card">
+        <div class="auth-logo">CHRONO<br><span>PRESTIGE</span></div>
+        <h2 class="auth-title" id="authTitle">Client Access</h2>
+        <p class="auth-sub">Sign in to your private account</p>
+
+        <div id="loginForm">
+          <input type="email" class="auth-input" id="loginEmail" placeholder="Email address" />
+          <input type="password" class="auth-input" id="loginPassword" placeholder="Password" />
+          <button class="btn-gold full-width" onclick="handleLogin()">Enter the Maison</button>
+          <p class="auth-switch">New client? <a href="#" onclick="toggleAuthMode()">Create Account</a></p>
+          <p class="auth-message" id="authMessage"></p>
+        </div>
+
+        <div id="signupForm" style="display:none">
+          <input type="text" class="auth-input" id="signupName" placeholder="Full name" />
+          <input type="email" class="auth-input" id="signupEmail" placeholder="Email address" />
+          <input type="password" class="auth-input" id="signupPassword" placeholder="Create password" />
+          <button class="btn-gold full-width" onclick="handleSignup()">Create Account</button>
+          <p class="auth-switch">Already a member? <a href="#" onclick="toggleAuthMode()">Sign In</a></p>
+          <p class="auth-message" id="signupMessage"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== CART PAGE ======================== -->
+  <div class="page" id="page-cart">
+    <div class="page-hero-sm">
+      <h1 class="page-hero-title">Your Selection</h1>
+    </div>
+    <div class="container">
+      <div class="cart-layout">
+        <div class="cart-items" id="cartItems">
+          <!-- Populated by JS -->
+        </div>
+        <div class="cart-summary" id="cartSummary">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">CHRONO<br><span>PRESTIGE</span></div>
+        <p class="footer-tagline">Perfection measured<br>in every second.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Maison</h4>
+        <a href="#" onclick="showPage('collections')">Collections</a>
+        <a href="#">Heritage</a>
+        <a href="#">Craftsmanship</a>
+        <a href="#">Boutiques</a>
+      </div>
+      <div class="footer-links">
+        <h4>Client Services</h4>
+        <a href="#">Servicing</a>
+        <a href="#">Authentication</a>
+        <a href="#">Warranty</a>
+        <a href="#" onclick="showPage('login')">My Account</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp Concierge</a>
+        <a href="#">Press</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Chrono Prestige. All rights reserved. Geneva · London · Dubai · Tokyo</p>
+    </div>
+  </footer>
+
+  <!-- NOTIFICATION TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "chrono-prestige",
+  "version": "1.0.0",
+  "description": "Luxury watch website with Three.js 3D, Express backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": ["luxury", "watch", "three.js", "express"],
+  "author": "Chrono Prestige",
+  "license": "MIT"
+}
